@@ -1,0 +1,102 @@
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<style type="text/css">
+.checkout-index-index .modal-popup .modal-inner-wrap {
+    margin: 0 auto;
+    width: 450px;
+    left: 0;
+    right: 0;
+}
+.checkout-index-index .modal-popup .modal-footer{
+    display: none;
+
+}
+.checkout-index-index .modal-popup .modal-header{
+    padding: 1px 0;
+}
+.mobile-number-verification h3{
+    font-size: 22px !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+.mobile-number-verification .verification-form{position: relative; margin: 22px 0 20px 0; }
+.mobile-number-verification .verification-form .form-row{margin: 0; }
+.mobile-number-verification .verification-form .form-row input{padding: 0 120px 0 15px; }
+.mobile-number-verification .verification-form button.action{position: absolute; right: 0; top: 0; }
+.mobile-number-verification .code-resend a{text-decoration: underline; color: #000; }
+.mobile-number-verification .code-resend a:hover{text-decoration: none; }
+
+@media (max-width:480px) {  
+    .checkout-index-index .modal-popup .modal-inner-wrap{width: calc(100% - 20px); }
+    .mobile-number-verification .verification-form .form-row input{padding-right: 100px; }
+    
+}
+</style>
+<div class="payment-method abccccccc" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div id="header-mpdal" style="display:none;">
+        <div class="videoWrapper mobile-number-verification">
+            <div class="container">
+                <div class="error"></div>
+                <form id="frm-mobile-verification">
+                    <h3>Mobile Number Verification</h3>
+                    <p>We need to verify your mobile phone number. A text message with your code has been sent to your mobile no:</p>
+                    <div class="verification-form">
+                        <div class="form-row">
+                            <input type="number" id="mobile" class="form-input"
+                                placeholder="Please enter your code">
+                        </div>
+                        <button id="top-cart-btn-checkout" type="button" class="action primary checkout" data-action="close" 
+                          data-bind="
+                               click: verifyOTP,
+                               i18n: 'Verify'" title="Verify">VERIFY
+                        </button>
+                    </div>
+                    <div class="code-resend"> No text message received? <a href="#" data-bind="
+                           click: resendOPT,
+                           i18n: 'Resend code'" title="Resend Code" >Resend code </a> </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label data-bind="attr: {'for': getCode()}" class="label"><span data-bind="text: getTitle()"></span></label>
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: directPayment,
+                        attr: {title: $t('Place Order')},
+                        css: {disabled: !isPlaceOrderActionAllowed()},
+                        enable: (getCode() == isChecked())
+                        "
+                        disabled>
+                    <span data-bind="i18n: 'Place Order'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

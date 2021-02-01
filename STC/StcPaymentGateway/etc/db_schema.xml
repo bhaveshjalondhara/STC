@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="stc_paymentgateway" resource="default" engine="innodb" comment="RH Helloworld">
+    	<!-- Auto increment Id -->
+        <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID"/>
+
+        <!-- BillNumber entity_id -->
+        <column xsi:type="int" name="bill_number" padding="56" unsigned="false" nullable="false" identity="false" comment="BillNumber"/>
+
+        <!-- customer RefNum -->
+        <column xsi:type="varchar" name="customer_refnum" nullable="false" length="256" comment="RefNum"/>
+
+        <!-- customer STCPayRefNum -->
+        <column xsi:type="varchar" name="customer_stcpayrefnum" nullable="false" length="256" comment="STCPayRefNum"/>
+
+         <!-- customer TokenId -->
+        <column xsi:type="varchar" name="customer_tokenid" nullable="false" length="256" comment="TokenId"/>
+
+        <!-- customer order amount  -->
+         <column xsi:type="decimal" name="customer_order_amount" scale="4" precision="12" unsigned="false" nullable="false" default="0" comment="Amount"/>
+
+        <!-- PaymentDate -->
+        <column xsi:type="timestamp" name="payment_date" on_update="false" nullable="false" comment="PaymentDate"/>
+
+          <!-- Order Payment PaymentStatus -->
+        <column xsi:type="int" name="payment_status" padding="56" unsigned="false" nullable="false" identity="false" comment="PaymentStatus"/>
+
+         <!-- Order Payment PaymentStatusDesc  -->
+        <column xsi:type="varchar" name="payment_statusdesc" length="255" comment="PaymentStatusDesc"/>
+
+        <!-- customer MobileNo  -->
+         <column xsi:type="varchar" name="customer_mobileno"  length="255" comment="MobileNo"/>
+
+        <!-- branchID  -->
+         <column xsi:type="varchar" name="branch_id" length="255" comment="branchID"/>
+
+        <!-- tellerID  -->
+         <column xsi:type="varchar" name="teller_id" length="255" comment="tellerID"/>
+
+        <!-- deviceID  -->
+         <column xsi:type="varchar" name="device_id"  length="255" comment="deviceID"/>
+
+        <!-- MerchantID  -->
+        <column xsi:type="varchar" name="merchant_id" length="255" comment="MerchantID"/>
+
+
+        <!-- current store ID -->
+        <column xsi:type="smallint" name="store_id" padding="6" unsigned="false" nullable="false" identity="false" comment="Store"/>
+
+         <!-- orderId -->
+        <column xsi:type="int" name="order_id" padding="56" unsigned="false" nullable="false" identity="false" comment="OrderId"/>
+
+
+         <!-- Order Payment QuoteId -->
+        <column xsi:type="int" name="quote_id" padding="56" unsigned="false" nullable="false" identity="false" comment="QuoteId"/>
+
+         <!-- Order Payment CustomerId -->
+        <column xsi:type="int" name="customer_id" padding="56" unsigned="false" nullable="false" identity="false" comment="customerId"/>
+       
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        
+    </table>
+</schema>

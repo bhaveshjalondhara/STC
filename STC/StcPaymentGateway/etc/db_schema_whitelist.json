@@ -1,0 +1,32 @@
+{
+    "stc_paymentgateway": {
+        "column": {
+            "id": true,
+            "bill_number": true,
+            "customer_refnum": true,
+            "customer_order_amount": true,
+            "customer_mobileno": true,
+            "branch_id": true,
+            "teller_id": true,
+            "device_id": true,
+            "merchant_note": true,
+            "expiry_period_type": true,
+            "expiry_period": true,
+            "authorization_reference": true,
+            "expiry_date": true,
+            "store_id": true,
+            "order_id": true,
+            "payment_status": true,
+            "payment_statusdesc": true,
+            "quote_id": true,
+            "customer_stcpayrefnum": true,
+            "customer_tokenid": true,
+            "payment_date": true,
+            "merchant_id": true,
+            "customer_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

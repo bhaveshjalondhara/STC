@@ -1,0 +1,12 @@
+<?php 
+/** @var STC\StcPaymentGateway\Block\Adminhtml\StcPayment $block */
+	$stcPayment	= $block->getStcPaymentData();
+	$data = $stcPayment->getFirstItem();
+?>
+<?php if ($stcPayment) : ?>
+<div class="admin__page-section-item-content">
+    <strong>Customer TokenId: </strong>
+	<span><?= $data->getCustomerTokenid() ?></span> <br>  
+	<br>                        
+</div>
+<?php endif; ?>
